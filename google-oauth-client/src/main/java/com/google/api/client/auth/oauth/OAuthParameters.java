@@ -112,6 +112,11 @@ public final class OAuthParameters implements HttpExecuteInterceptor, HttpReques
    */
   public String version;
 
+  /**
+   * Specifically for the Twitter API OAuth: the content of a new status message
+   */
+  public String status;
+
   private static final PercentEscaper ESCAPER = new PercentEscaper("-_.~", false);
 
   /**
@@ -179,6 +184,7 @@ public final class OAuthParameters implements HttpExecuteInterceptor, HttpReques
     putParameterIfValueNotNull(parameters, "oauth_token", token);
     putParameterIfValueNotNull(parameters, "oauth_verifier", verifier);
     putParameterIfValueNotNull(parameters, "oauth_version", version);
+    putParameterIfValueNotNull(parameters, "status", status);
     // parse request URL for query parameters
     for (Map.Entry<String, Object> fieldEntry : requestUrl.entrySet()) {
       Object value = fieldEntry.getValue();
